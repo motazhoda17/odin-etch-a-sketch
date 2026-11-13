@@ -21,9 +21,15 @@ function createGrid(size) {
     square.style.width = `${squareSize}px`;
     square.style.height = `${squareSize}px`;
 
-    // Color the square when the mouse passes over it, like a pen
+    // Color the square when the mouse passes over it, like a pen.
+    // Each pass adds 10% opacity, so 10 passes = fully colored.
     square.addEventListener("mouseover", () => {
       square.style.backgroundColor = getRandomColor();
+
+      const currentOpacity = Number(square.style.opacity) || 0;
+      if (currentOpacity < 1) {
+        square.style.opacity = currentOpacity + 0.1;
+      }
     });
 
     container.appendChild(square);

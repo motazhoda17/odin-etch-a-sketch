@@ -3,6 +3,8 @@ const GRID_WIDTH = 960; // matches #container width in style.css
 
 // Build a grid with `size` squares per side
 function createGrid(size) {
+  container.innerHTML = ""; // remove the old grid first
+
   const squareSize = GRID_WIDTH / size; // e.g. 960 / 16 = 60px
 
   for (let i = 0; i < size * size; i++) {
@@ -19,5 +21,22 @@ function createGrid(size) {
     container.appendChild(square);
   }
 }
+
+// Ask the user for a new size and rebuild the grid
+const resizeButton = document.querySelector("#resize");
+
+resizeButton.addEventListener("click", () => {
+  const input = prompt("How many squares per side? (1-100)");
+  if (input === null) return; // user clicked Cancel
+
+  const size = parseInt(input);
+
+  if (Number.isNaN(size) || size < 1 || size > 100) {
+    alert("Please enter a number from 1 to 100.");
+    return;
+  }
+
+  createGrid(size);
+});
 
 createGrid(16);

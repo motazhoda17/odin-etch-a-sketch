@@ -1,6 +1,14 @@
 const container = document.querySelector("#container");
 const GRID_WIDTH = 960; // matches #container width in style.css
 
+// Return a random color like "rgb(120, 45, 230)"
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 256); // 0-255
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
 // Build a grid with `size` squares per side
 function createGrid(size) {
   container.innerHTML = ""; // remove the old grid first
@@ -15,7 +23,7 @@ function createGrid(size) {
 
     // Color the square when the mouse passes over it, like a pen
     square.addEventListener("mouseover", () => {
-      square.style.backgroundColor = "black";
+      square.style.backgroundColor = getRandomColor();
     });
 
     container.appendChild(square);

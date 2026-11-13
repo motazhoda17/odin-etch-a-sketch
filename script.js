@@ -10,6 +10,12 @@ function createGrid(size) {
     square.classList.add("square");
     square.style.width = `${squareSize}px`;
     square.style.height = `${squareSize}px`;
+
+    // Color the square when the mouse passes over it, like a pen
+    square.addEventListener("mouseover", () => {
+      square.style.backgroundColor = "black";
+    });
+
     container.appendChild(square);
   }
 }

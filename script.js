@@ -27,9 +27,7 @@ function createGrid(size) {
       square.style.backgroundColor = getRandomColor();
 
       const currentOpacity = Number(square.style.opacity) || 0;
-      if (currentOpacity < 1) {
-        square.style.opacity = currentOpacity + 0.1;
-      }
+      square.style.opacity = Math.min(currentOpacity + 0.1, 1); // never above 1
     });
 
     container.appendChild(square);
